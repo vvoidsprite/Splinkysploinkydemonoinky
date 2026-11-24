@@ -1,0 +1,89 @@
+{
+  "speakers": { "Maren": "#d8c8e8", "Edrin": "#e8d9a8", "Crow": "#8f9bc4" },
+  "conversations": {
+    "edrin_first": [
+      {"speaker": "Edrin", "text": "Sister Maren? Light keep you. I'm Edrin. I've been sent to look after you while you're at Hollowmere."},
+      {"speaker": "Edrin", "text": "I aired the room out myself. The damp gets into everything here. Even the hymnals."},
+      {"speaker": "Maren", "text": "It's colder than I remember."},
+      {"speaker": "Edrin", "text": "You've been here before? Of course. You'd have been very small. Forgive me."},
+      {"speaker": "Edrin", "text": "They say there's no hurry about the Rite. Rest first. I'll be just down the hall if you need an extra pair of hands."},
+      {"speaker": "", "text": "Edrin bows, a little too low, and goes."}
+    ],
+    "crow_first": [
+      {"speaker": "", "text": "A crow sits on the sill. The window is shut."},
+      {"speaker": "Crow", "text": "You came back."},
+      {"speaker": "Maren", "text": "..."},
+      {"speaker": "Crow", "text": "You've grown. You still tuck your thumbs in when you're frightened."},
+      {"speaker": "Crow", "text": "The acolyte is kind. Kind people hold doors very carefully."},
+      {"speaker": "Crow", "text": "When you go down there... don't close it behind you. Not yet."},
+      {"speaker": "Maren", "text": "Go, before someone sees you."},
+      {"speaker": "Crow", "text": "Someone always sees me. You do."}
+    ],
+    "crow_repeat": [
+      {"speaker": "Crow", "text": "I'm still here. I'm always a little bit here."}
+    ],
+    "table": [{"speaker": "", "text": "A writing table. Someone has scratched out every third word of the prayer pinned above it."}],
+    "drawer": [{"speaker": "", "text": "Candle stubs, each one burned down to exactly the same line."}],
+    "bed": [{"speaker": "", "text": "The sheets are turned down. On the pillow, a pressed lily of the Order, still perfectly white."}],
+    "mirror": [{"speaker": "", "text": "A cloth hangs over the mirror. It has been nailed down at the corners."}],
+    "portrait": [{"speaker": "", "text": "A Lychkin holder, painted in full vestments. The face has been painted over in white. Carefully."}],
+    "cabinet_warning": [
+      {"speaker": "", "text": "A reliquary cabinet, chained shut. Something inside shifts its weight against the doors."},
+      {"speaker": "Maren", "text": "The priests should have the key to this."}
+    ],
+    "cabinet_open": [
+      {"speaker": "", "text": "The chain was barely holding."},
+      {"speaker": "", "text": "The saint inside has been folded to fit."}
+    ],
+    "door_locked": [{"speaker": "", "text": "The door is shut fast."}],
+    "door_holds": [{"speaker": "", "text": "The door holds behind you."}],
+
+    "gate_lily": [{"speaker": "", "text": "An Order lily in a stone cup by the gate. Its petals have gone the colour of tallow."}],
+    "gate_cathedral": [{"speaker": "", "text": "Beyond the wall, the cathedral. No windows are lit. It looks closer than it should."}],
+    "gate_bellrope": [{"speaker": "", "text": "A bell rope, cut cleanly at shoulder height."}],
+    "edrin_arrival": [
+      {"speaker": "Edrin", "text": "Sister Maren? Light keep you. I'm Edrin. I've been sent to look after you."},
+      {"speaker": "Edrin", "text": "You'll want to be out of the cold. The damp gets into everything here. Even the hymnals."},
+      {"speaker": "Maren", "text": "It's colder than I remember."},
+      {"speaker": "Edrin", "text": "You've been here before? Of course. You'd have been very small. Forgive me."},
+      {"speaker": "Edrin", "text": "This way."}
+    ],
+    "hall_hooks": [{"speaker": "", "text": "A row of coat hooks. One still holds a child's coat, far too small and far too clean."}],
+    "hall_hymnboard": [{"speaker": "", "text": "A hymn board. The numbers have been taken down and stacked face-down beneath it."}],
+    "edrin_goodnight": [
+      {"speaker": "Edrin", "text": "This is yours. I aired it out myself."},
+      {"speaker": "Edrin", "text": "There's... a custom, the first night. The door is locked until the morning bell. I'll let you out myself."},
+      {"speaker": "Edrin", "text": "I'm sorry. I know how it sounds."},
+      {"speaker": "Maren", "text": "It's all right. I remember the custom."},
+      {"speaker": "Edrin", "text": "Light keep you, Sister."}
+    ],
+    "room_key_turns": [{"speaker": "", "text": "The key turns. He waits a moment on the other side before he goes."}],
+    "crow_room_arrival": [{"speaker": "", "text": "Something taps at the glass. Then it is on the sill, inside, and the glass is still whole."}],
+    "crow_room_first": [
+      {"speaker": "Crow", "text": "There you are."},
+      {"speaker": "Maren", "text": "..."},
+      {"speaker": "Crow", "text": "You still tuck your thumbs in when you're frightened."},
+      {"speaker": "Crow", "text": "He locked it gently. They always do it gently."},
+      {"speaker": "Crow", "text": "I can keep this moment for you, if you like. I keep all of them."}
+    ],
+    "crow_room_repeat_1": [{"speaker": "Crow", "text": "Still here. I'm always a little bit here."}],
+    "crow_room_repeat_2": [{"speaker": "Crow", "text": "You used to hum when you counted stairs. You're doing it now."}],
+    "crow_room_repeat_3": [{"speaker": "Crow", "text": "Every door in this house remembers your hands."}],
+    "crow_save_prompt": [
+      {"speaker": "Crow", "text": "Shall I keep this one?",
+       "choices": [{"text": "Keep it", "value": "save"}, {"text": "Not now", "value": "no"}]}
+    ],
+    "crow_saved": [{"speaker": "Crow", "text": "Kept. I've had a lot of practice holding on to things."}],
+    "crow_declined": [{"speaker": "Crow", "text": "Then I'll only watch."}],
+    "room_prayer": [{"speaker": "", "text": "The Order's evening prayer, pinned above the table: \"We obey, we endure, we give, and so the Light is kept.\" Someone has scratched out every third word."}],
+    "room_sill_carving": [{"speaker": "", "text": "Small letters cut into the sill, at a child's eye height: \"Give first. Then hold on. Then do as you're told, last of all, and someone will come to sit with you.\""}],
+    "candle_plaque_obey": [{"speaker": "", "text": "A candle in an iron cup. Carved beneath it: OBEY."}],
+    "candle_plaque_endure": [{"speaker": "", "text": "A candle in an iron cup. Carved beneath it: ENDURE."}],
+    "candle_plaque_give": [{"speaker": "", "text": "A candle in an iron cup. Carved beneath it: GIVE."}],
+    "candles_wrong": [{"speaker": "", "text": "The flames lean toward the door, all three at once, and go out."}],
+    "candles_right": [{"speaker": "", "text": "The flames stand very straight. Behind the cloth, a nail drops to the floor. Then another."}],
+    "room_mirror_open": [{"speaker": "", "text": "The cloth falls. There is no glass behind it, only a low passage, and cold air."}],
+    "room_feather": [{"speaker": "", "text": "A black feather on the sill. It leaves no dust on your fingers, though it should."}],
+    "door_locked_room": [{"speaker": "", "text": "Locked. From the outside."}]
+  }
+}

@@ -1,0 +1,696 @@
+[gd_scene load_steps=34 format=3]
+
+[ext_resource type="Script" path="res://scripts/areas/prologue/gate.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/world/exit.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/interaction/interactable.gd" id="4"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/castle_outside.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/RPGFW_Set1_v1.0/_PNG/g_terrain1.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/RPGFW_Set1_v1.0/_PNG/veg_decoratives.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/MemaoCharacterFantasySpritePack-v3/004.png" id="8"]
+[ext_resource type="Script" path="res://scripts/characters/character_sprite.gd" id="9"]
+[ext_resource type="Script" path="res://scripts/world/frame_loop.gd" id="10"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/Anim/torch.png" id="11"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/Anim/light1a.png" id="12"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/castle_decoratives.png" id="13"]
+[ext_resource type="Script" path="res://scripts/world/tree_border.gd" id="14"]
+
+[sub_resource type="RectangleShape2D" id="castle"]
+size = Vector2(464, 336)
+
+[sub_resource type="RectangleShape2D" id="row21"]
+size = Vector2(224, 16)
+
+[sub_resource type="RectangleShape2D" id="side"]
+size = Vector2(16, 624)
+
+[sub_resource type="RectangleShape2D" id="south"]
+size = Vector2(464, 16)
+
+[sub_resource type="RectangleShape2D" id="g16_16"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="g32_16"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="e32_8"]
+size = Vector2(32, 8)
+
+[sub_resource type="CircleShape2D" id="c16"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="r12_8"]
+size = Vector2(12, 8)
+
+[sub_resource type="RectangleShape2D" id="r14_14"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="r40_32"]
+size = Vector2(40, 32)
+
+[sub_resource type="RectangleShape2D" id="r24_24"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="r48_16"]
+size = Vector2(48, 16)
+
+[sub_resource type="CanvasItemMaterial" id="add"]
+blend_mode = 1
+
+[node name="Gate" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1")
+metadata/area_size = Vector2i(464, 624)
+metadata/area_label = "Hollowmere, the gate"
+metadata/border = "trees"
+
+[node name="Dusk" type="CanvasModulate" parent="."]
+color = Color(0.72, 0.62, 0.8, 1)
+
+[node name="Grass" type="TileMapLayer" parent="."]
+position = Vector2(-8, 0)
+z_index = -2
+script = ExtResource("2")
+atlas = ExtResource("6")
+legend = {"g": Rect2i(28, 0, 4, 4)}
+rows = PackedStringArray("ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg", "ggggggggggggggg")
+
+[node name="Cobble" type="TileMapLayer" parent="."]
+position = Vector2(-8, 0)
+z_index = -1
+script = ExtResource("2")
+atlas = ExtResource("6")
+legend = {"c": Rect2i(37, 0, 2, 3)}
+rows = PackedStringArray("               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "  ccccccccccc  ", "  ccccccccccc  ", "      ccc      ", "      ccc      ", "      ccc      ", "      ccc      ", "      ccc      ", "      ccc      ", "               ")
+
+[node name="TreeBorder" type="Node2D" parent="."]
+z_index = -2
+script = ExtResource("14")
+inset = 0
+
+[node name="Facade" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Cathedral" type="Polygon2D" parent="Facade"]
+color = Color(0.1, 0.09, 0.15, 1)
+polygon = PackedVector2Array(330, 150, 330, 22, 342, 22, 350, 4, 358, 22, 376, 22, 380, 12, 390, 0, 400, 12, 404, 22, 424, 22, 432, 4, 440, 22, 452, 22, 452, 150)
+
+[node name="CastleBack" type="ColorRect" parent="Facade"]
+offset_left = 40.0
+offset_top = 110.0
+offset_right = 424.0
+offset_bottom = 352.0
+mouse_filter = 2
+color = Color(0.16, 0.15, 0.18, 1)
+
+[node name="PineBehindA" type="Sprite2D" parent="Facade"]
+modulate = Color(0.7, 0.75, 0.8, 1)
+position = Vector2(34, 60)
+texture = ExtResource("7")
+centered = false
+offset = Vector2(-32, -168)
+region_enabled = true
+region_rect = Rect2(587, 20, 65, 168)
+
+[node name="PineBehindB" type="Sprite2D" parent="Facade"]
+modulate = Color(0.7, 0.75, 0.8, 1)
+position = Vector2(104, 56)
+texture = ExtResource("7")
+centered = false
+flip_h = true
+offset = Vector2(-39, -156)
+region_enabled = true
+region_rect = Rect2(682, 32, 79, 156)
+
+[node name="BackWingW" type="Sprite2D" parent="Facade"]
+modulate = Color(0.78, 0.78, 0.86, 1)
+position = Vector2(0, 30)
+texture = ExtResource("5")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 291, 176, 172)
+
+[node name="BackWingE" type="Sprite2D" parent="Facade"]
+modulate = Color(0.78, 0.78, 0.86, 1)
+position = Vector2(288, 30)
+texture = ExtResource("5")
+centered = false
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 291, 176, 172)
+
+[node name="Keep" type="Sprite2D" parent="Facade"]
+position = Vector2(143, 0)
+texture = ExtResource("5")
+centered = false
+region_enabled = true
+region_rect = Rect2(823, 196, 178, 328)
+
+[node name="WingWUp" type="Sprite2D" parent="Facade"]
+position = Vector2(40, 110)
+texture = ExtResource("5")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 291, 176, 172)
+
+[node name="WingEUp" type="Sprite2D" parent="Facade"]
+position = Vector2(248, 110)
+texture = ExtResource("5")
+centered = false
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 291, 176, 172)
+
+[node name="WingWLow" type="Sprite2D" parent="Facade"]
+position = Vector2(56, 242)
+texture = ExtResource("5")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 480, 144, 110)
+
+[node name="WingELow" type="Sprite2D" parent="Facade"]
+position = Vector2(264, 242)
+texture = ExtResource("5")
+centered = false
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 480, 144, 110)
+
+[node name="RoundTowerW" type="Sprite2D" parent="Facade"]
+position = Vector2(0, 150)
+texture = ExtResource("5")
+centered = false
+region_enabled = true
+region_rect = Rect2(2, 832, 60, 202)
+
+[node name="RoundTowerE" type="Sprite2D" parent="Facade"]
+position = Vector2(404, 150)
+texture = ExtResource("5")
+centered = false
+flip_h = true
+region_enabled = true
+region_rect = Rect2(2, 832, 60, 202)
+
+[node name="SlimTowerW" type="Sprite2D" parent="Facade"]
+position = Vector2(168, 164)
+texture = ExtResource("5")
+centered = false
+region_enabled = true
+region_rect = Rect2(12, 624, 40, 188)
+
+[node name="SlimTowerE" type="Sprite2D" parent="Facade"]
+position = Vector2(256, 164)
+texture = ExtResource("5")
+centered = false
+flip_h = true
+region_enabled = true
+region_rect = Rect2(12, 624, 40, 188)
+
+[node name="Portal" type="Sprite2D" parent="Facade"]
+position = Vector2(209, 255)
+texture = ExtResource("5")
+centered = false
+region_enabled = true
+region_rect = Rect2(1449, 427, 46, 105)
+
+[node name="BannerW" type="Sprite2D" parent="Facade"]
+position = Vector2(179, 200)
+texture = ExtResource("13")
+centered = false
+region_enabled = true
+region_rect = Rect2(7, 269, 18, 36)
+
+[node name="BannerE" type="Sprite2D" parent="Facade"]
+position = Vector2(267, 200)
+texture = ExtResource("13")
+centered = false
+region_enabled = true
+region_rect = Rect2(7, 269, 18, 36)
+
+[node name="ParapetShadowW" type="ColorRect" parent="Facade"]
+offset_left = 40.0
+offset_top = 146.0
+offset_right = 168.0
+offset_bottom = 150.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.22)
+
+[node name="ParapetShadowE" type="ColorRect" parent="Facade"]
+offset_left = 296.0
+offset_top = 146.0
+offset_right = 424.0
+offset_bottom = 150.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.22)
+
+[node name="FootShadow" type="ColorRect" parent="Facade"]
+offset_top = 352.0
+offset_right = 464.0
+offset_bottom = 364.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.22)
+
+[node name="BaseShadowRoundW" type="ColorRect" parent="Facade"]
+offset_top = 352.0
+offset_right = 60.0
+offset_bottom = 358.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="BaseShadowRoundE" type="ColorRect" parent="Facade"]
+offset_left = 404.0
+offset_top = 352.0
+offset_right = 464.0
+offset_bottom = 358.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="BaseShadowSlimW" type="ColorRect" parent="Facade"]
+offset_left = 168.0
+offset_top = 352.0
+offset_right = 208.0
+offset_bottom = 358.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="BaseShadowSlimE" type="ColorRect" parent="Facade"]
+offset_left = 256.0
+offset_top = 352.0
+offset_right = 296.0
+offset_bottom = 358.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="TorchDoorW" type="Sprite2D" parent="Facade"]
+position = Vector2(200, 300)
+texture = ExtResource("11")
+hframes = 4
+vframes = 2
+script = ExtResource("10")
+
+[node name="GlowTorchDoorW" type="Sprite2D" parent="Facade"]
+material = SubResource("add")
+position = Vector2(200, 300)
+modulate = Color(1, 0.75, 0.4, 0.55)
+texture = ExtResource("12")
+hframes = 4
+vframes = 2
+script = ExtResource("10")
+
+[node name="TorchDoorE" type="Sprite2D" parent="Facade"]
+position = Vector2(264, 300)
+texture = ExtResource("11")
+hframes = 4
+vframes = 2
+script = ExtResource("10")
+
+[node name="GlowTorchDoorE" type="Sprite2D" parent="Facade"]
+material = SubResource("add")
+position = Vector2(264, 300)
+modulate = Color(1, 0.75, 0.4, 0.55)
+texture = ExtResource("12")
+hframes = 4
+vframes = 2
+script = ExtResource("10")
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="Castle" type="StaticBody2D" parent="Bounds"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/Castle"]
+position = Vector2(232, 168)
+shape = SubResource("castle")
+
+[node name="Row21W" type="StaticBody2D" parent="Bounds"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/Row21W"]
+position = Vector2(112, 344)
+shape = SubResource("row21")
+
+[node name="Row21E" type="StaticBody2D" parent="Bounds"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/Row21E"]
+position = Vector2(352, 344)
+shape = SubResource("row21")
+
+[node name="West" type="StaticBody2D" parent="Bounds"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/West"]
+position = Vector2(-8, 312)
+shape = SubResource("side")
+
+[node name="East" type="StaticBody2D" parent="Bounds"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/East"]
+position = Vector2(472, 312)
+shape = SubResource("side")
+
+[node name="South" type="StaticBody2D" parent="Bounds"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/South"]
+position = Vector2(232, 632)
+shape = SubResource("south")
+
+[node name="Props" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="DeadTreeW" type="StaticBody2D" parent="Props"]
+position = Vector2(56, 472)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/DeadTreeW"]
+texture = ExtResource("7")
+centered = false
+offset = Vector2(-28, -155)
+region_enabled = true
+region_rect = Rect2(837, 32, 56, 155)
+
+[node name="FernA" type="Sprite2D" parent="Props/DeadTreeW"]
+position = Vector2(-16, 4)
+texture = ExtResource("7")
+centered = false
+offset = Vector2(-24, -38)
+region_enabled = true
+region_rect = Rect2(295, 715, 48, 38)
+
+[node name="Tuft" type="Sprite2D" parent="Props/DeadTreeW"]
+position = Vector2(12, 3)
+texture = ExtResource("7")
+centered = false
+offset = Vector2(-10, -22)
+region_enabled = true
+region_rect = Rect2(6, 643, 20, 22)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/DeadTreeW"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="DeadTreeE" type="StaticBody2D" parent="Props"]
+position = Vector2(408, 536)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/DeadTreeE"]
+texture = ExtResource("7")
+centered = false
+offset = Vector2(-25, -131)
+region_enabled = true
+region_rect = Rect2(901, 56, 51, 131)
+
+[node name="FernA" type="Sprite2D" parent="Props/DeadTreeE"]
+position = Vector2(14, 4)
+texture = ExtResource("7")
+centered = false
+flip_h = true
+offset = Vector2(-20, -28)
+region_enabled = true
+region_rect = Rect2(366, 706, 39, 28)
+
+[node name="Tuft" type="Sprite2D" parent="Props/DeadTreeE"]
+position = Vector2(-14, 3)
+texture = ExtResource("7")
+centered = false
+offset = Vector2(-8, -32)
+region_enabled = true
+region_rect = Rect2(742, 704, 17, 32)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/DeadTreeE"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="LilyCup" type="StaticBody2D" parent="Props"]
+position = Vector2(152, 544)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Cup" type="ColorRect" parent="Props/LilyCup"]
+offset_left = -7.0
+offset_top = -12.0
+offset_right = 7.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.45, 0.43, 0.42, 1)
+
+[node name="CupRim" type="ColorRect" parent="Props/LilyCup"]
+offset_left = -8.0
+offset_top = -13.0
+offset_right = 8.0
+offset_bottom = -11.0
+mouse_filter = 2
+color = Color(0.6, 0.58, 0.56, 1)
+
+[node name="Stem" type="ColorRect" parent="Props/LilyCup"]
+offset_left = -1.0
+offset_top = -24.0
+offset_right = 1.0
+offset_bottom = -12.0
+mouse_filter = 2
+color = Color(0.3, 0.34, 0.2, 1)
+
+[node name="LeafL" type="ColorRect" parent="Props/LilyCup"]
+offset_left = -8.0
+offset_top = -20.0
+offset_right = -1.0
+offset_bottom = -17.0
+mouse_filter = 2
+color = Color(0.28, 0.42, 0.22, 1)
+
+[node name="LeafR" type="ColorRect" parent="Props/LilyCup"]
+offset_left = 1.0
+offset_top = -18.0
+offset_right = 8.0
+offset_bottom = -15.0
+mouse_filter = 2
+color = Color(0.28, 0.42, 0.22, 1)
+
+[node name="Bloom" type="ColorRect" parent="Props/LilyCup"]
+offset_left = -5.0
+offset_top = -32.0
+offset_right = 5.0
+offset_bottom = -23.0
+mouse_filter = 2
+color = Color(0.92, 0.9, 0.8, 1)
+
+[node name="BloomHeart" type="ColorRect" parent="Props/LilyCup"]
+offset_left = -2.0
+offset_top = -29.0
+offset_right = 2.0
+offset_bottom = -25.0
+mouse_filter = 2
+color = Color(0.9, 0.7, 0.3, 1)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/LilyCup"]
+position = Vector2(0, -8)
+shape = SubResource("r14_14")
+
+[node name="Interact" type="Area2D" parent="Props/LilyCup"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "gate_lily"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/LilyCup/Interact"]
+position = Vector2(0, -8)
+shape = SubResource("r40_32")
+
+[node name="BellPost" type="StaticBody2D" parent="Props"]
+position = Vector2(136, 384)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Post" type="ColorRect" parent="Props/BellPost"]
+offset_left = -2.0
+offset_top = -46.0
+offset_right = 2.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.28, 0.2, 0.15, 1)
+
+[node name="Arm" type="ColorRect" parent="Props/BellPost"]
+offset_left = -2.0
+offset_top = -46.0
+offset_right = 12.0
+offset_bottom = -43.0
+mouse_filter = 2
+color = Color(0.34, 0.25, 0.18, 1)
+
+[node name="Bell" type="ColorRect" parent="Props/BellPost"]
+offset_left = 6.0
+offset_top = -43.0
+offset_right = 12.0
+offset_bottom = -36.0
+mouse_filter = 2
+color = Color(0.66, 0.5, 0.25, 1)
+
+[node name="Rope" type="ColorRect" parent="Props/BellPost"]
+offset_left = 8.0
+offset_top = -36.0
+offset_right = 10.0
+offset_bottom = -22.0
+mouse_filter = 2
+color = Color(0.6, 0.52, 0.4, 1)
+
+[node name="Base" type="ColorRect" parent="Props/BellPost"]
+offset_left = -5.0
+offset_top = -3.0
+offset_right = 5.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.4, 0.38, 0.38, 1)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/BellPost"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="Interact" type="Area2D" parent="Props/BellPost"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "gate_bellrope"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/BellPost/Interact"]
+position = Vector2(0, -8)
+shape = SubResource("r24_24")
+
+[node name="PostStubW" type="StaticBody2D" parent="Props"]
+position = Vector2(160, 624)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/PostStubW"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-16, -68)
+region_enabled = true
+region_rect = Rect2(768, 932, 32, 68)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/PostStubW"]
+position = Vector2(0, -8)
+shape = SubResource("g32_16")
+
+[node name="PostStubE" type="StaticBody2D" parent="Props"]
+position = Vector2(304, 624)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/PostStubE"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-16, -68)
+region_enabled = true
+region_rect = Rect2(768, 932, 32, 68)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/PostStubE"]
+position = Vector2(0, -8)
+shape = SubResource("g32_16")
+
+[node name="GateLeafW" type="StaticBody2D" parent="Props"]
+position = Vector2(192, 624)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/GateLeafW"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-16, -55)
+region_enabled = true
+region_rect = Rect2(960, 841, 31, 55)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/GateLeafW"]
+position = Vector2(0, -8)
+shape = SubResource("g32_16")
+
+[node name="GateLeafE" type="StaticBody2D" parent="Props"]
+position = Vector2(272, 624)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/GateLeafE"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-16, -55)
+region_enabled = true
+region_rect = Rect2(993, 841, 31, 55)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/GateLeafE"]
+position = Vector2(0, -8)
+shape = SubResource("g32_16")
+
+[node name="CathedralLook" type="Area2D" parent="."]
+position = Vector2(376, 344)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "gate_cathedral"
+
+[node name="Shape" type="CollisionShape2D" parent="CathedralLook"]
+shape = SubResource("r48_16")
+
+[node name="Edrin" type="Area2D" parent="."]
+position = Vector2(232, 376)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "edrin_arrival"
+
+[node name="Sprite" type="Sprite2D" parent="Edrin"]
+texture = ExtResource("8")
+offset = Vector2(0, -17)
+hframes = 8
+vframes = 41
+script = ExtResource("9")
+facing = "down"
+
+[node name="Lamp" type="ColorRect" parent="Edrin"]
+offset_left = 9.0
+offset_top = -16.0
+offset_right = 14.0
+offset_bottom = -9.0
+mouse_filter = 2
+color = Color(1, 0.78, 0.35, 1)
+
+[node name="LampGlow" type="Polygon2D" parent="Edrin"]
+position = Vector2(11.5, -12.5)
+color = Color(1, 0.75, 0.3, 0.25)
+polygon = PackedVector2Array(-9, 0, -6, -6, 0, -9, 6, -6, 9, 0, 6, 6, 0, 9, -6, 6)
+
+[node name="Shape" type="CollisionShape2D" parent="Edrin"]
+position = Vector2(0, -10)
+shape = SubResource("c16")
+
+[node name="Block" type="StaticBody2D" parent="Edrin"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Edrin/Block"]
+position = Vector2(0, -4)
+shape = SubResource("r12_8")
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(232, 344)
+script = ExtResource("3")
+target_area = "entrance_hall"
+target_spawn = "start"
+enabled = false
+
+[node name="Shape" type="CollisionShape2D" parent="Exit"]
+shape = SubResource("e32_8")
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Spawns"]
+position = Vector2(232, 600)
+metadata/facing = "up"

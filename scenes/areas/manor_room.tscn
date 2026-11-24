@@ -1,0 +1,491 @@
+[gd_scene load_steps=33 format=3]
+
+[ext_resource type="Script" path="res://scripts/areas/manor_room.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/world/frame_loop.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/interaction/interactable.gd" id="4"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/castle_interriors.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/castle_decoratives.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/Anim/torch.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/Anim/light2a.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/MemaoCharacterFantasySpritePack-v3/004.png" id="9"]
+[ext_resource type="Script" path="res://scripts/characters/character_sprite.gd" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/chase/chase_kit.tscn" id="11"]
+
+[sub_resource type="RectangleShape2D" id="r768_96"]
+size = Vector2(768, 96)
+
+[sub_resource type="RectangleShape2D" id="r32_448"]
+size = Vector2(32, 448)
+
+[sub_resource type="RectangleShape2D" id="r768_32"]
+size = Vector2(768, 32)
+
+[sub_resource type="RectangleShape2D" id="r32_40"]
+size = Vector2(32, 40)
+
+[sub_resource type="RectangleShape2D" id="r40_40"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="r48_24"]
+size = Vector2(48, 24)
+
+[sub_resource type="RectangleShape2D" id="r64_40"]
+size = Vector2(64, 40)
+
+[sub_resource type="RectangleShape2D" id="r40_24"]
+size = Vector2(40, 24)
+
+[sub_resource type="RectangleShape2D" id="r56_40"]
+size = Vector2(56, 40)
+
+[sub_resource type="RectangleShape2D" id="r80_50"]
+size = Vector2(80, 50)
+
+[sub_resource type="RectangleShape2D" id="r96_66"]
+size = Vector2(96, 66)
+
+[sub_resource type="RectangleShape2D" id="r16_10"]
+size = Vector2(16, 10)
+
+[sub_resource type="RectangleShape2D" id="r26_16"]
+size = Vector2(26, 16)
+
+[sub_resource type="RectangleShape2D" id="r28_14"]
+size = Vector2(28, 14)
+
+[sub_resource type="RectangleShape2D" id="r12_8"]
+size = Vector2(12, 8)
+
+[sub_resource type="CircleShape2D" id="c16"]
+radius = 16
+
+[sub_resource type="RectangleShape2D" id="r28_28"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="g16_16"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="g48_16"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="g32_16"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="g80_48"]
+size = Vector2(80, 48)
+
+[node name="ManorRoom" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1")
+metadata/area_size = Vector2i(768, 448)
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+z_index = -1
+script = ExtResource("2")
+atlas = ExtResource("5")
+legend = {".": Rect2i(15, 14, 2, 2), "1": Rect2i(4, 4, 1, 1), "2": Rect2i(0, 4, 1, 1), "3": Rect2i(4, 0, 1, 1), "4": Rect2i(0, 0, 1, 1), "B": Rect2i(2, 8, 1, 1), "L": Rect2i(4, 2, 1, 1), "R": Rect2i(0, 2, 1, 1), "^": Rect2i(2, 4, 1, 1), "_": Rect2i(2, 0, 1, 1), "b": Rect2i(2, 6, 1, 1)}
+rows = PackedStringArray("1^^^^^^^^^^^^^^^^^^^^^^2", "LbbbbbbbbbbbbbbbbbbbbbbR", "LBBBBBBBBBBBBBBBBBBBBBBR", "L......................R", "L......................R", "L......................R", "L......................R", "L......................R", "L......................R", "L......................R", "L......................R", "L......................R", "L......................R", "3______________________4")
+
+[node name="Rug" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 304.0
+offset_top = 312.0
+offset_right = 464.0
+offset_bottom = 408.0
+mouse_filter = 2
+color = Color(0.22, 0.14, 0.2, 1)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="WallNorth" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallNorth"]
+position = Vector2(384, 48)
+shape = SubResource("r768_96")
+
+[node name="WallWest" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallWest"]
+position = Vector2(16, 224)
+shape = SubResource("r32_448")
+
+[node name="WallEast" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallEast"]
+position = Vector2(752, 224)
+shape = SubResource("r32_448")
+
+[node name="WallSouth" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallSouth"]
+position = Vector2(384, 432)
+shape = SubResource("r768_32")
+
+[node name="Decor" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="WindowW" type="Sprite2D" parent="Decor"]
+position = Vector2(130, 44)
+texture = ExtResource("5")
+centered = false
+region_enabled = true
+region_rect = Rect2(2, 948, 28, 44)
+
+[node name="WindowE" type="Sprite2D" parent="Decor"]
+position = Vector2(450, 44)
+texture = ExtResource("5")
+centered = false
+region_enabled = true
+region_rect = Rect2(2, 948, 28, 44)
+
+[node name="TorchW" type="Sprite2D" parent="Decor"]
+position = Vector2(240, 56)
+texture = ExtResource("7")
+hframes = 4
+vframes = 2
+script = ExtResource("3")
+
+[node name="TorchE" type="Sprite2D" parent="Decor"]
+position = Vector2(592, 56)
+texture = ExtResource("7")
+hframes = 4
+vframes = 2
+script = ExtResource("3")
+
+[node name="Banner" type="Sprite2D" parent="Decor"]
+position = Vector2(528, 44)
+texture = ExtResource("6")
+centered = false
+region_enabled = true
+region_rect = Rect2(7, 269, 18, 36)
+
+[node name="Mirror" type="Area2D" parent="."]
+position = Vector2(300, 80)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "mirror"
+
+[node name="Color" type="ColorRect" parent="Mirror"]
+offset_left = -12.0
+offset_top = -34.0
+offset_right = 12.0
+offset_bottom = -6.0
+mouse_filter = 2
+color = Color(0.3, 0.3, 0.34, 1)
+
+[node name="Shape" type="CollisionShape2D" parent="Mirror"]
+shape = SubResource("r32_40")
+
+[node name="Portrait" type="Area2D" parent="."]
+position = Vector2(400, 80)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "portrait"
+
+[node name="Color" type="ColorRect" parent="Portrait"]
+offset_left = -12.0
+offset_top = -36.0
+offset_right = 12.0
+offset_bottom = -8.0
+mouse_filter = 2
+color = Color(0.5, 0.4, 0.3, 1)
+
+[node name="Face" type="ColorRect" parent="Portrait"]
+offset_left = -5.0
+offset_top = -32.0
+offset_right = 5.0
+offset_bottom = -22.0
+mouse_filter = 2
+color = Color(0.95, 0.95, 0.95, 1)
+
+[node name="Shape" type="CollisionShape2D" parent="Portrait"]
+shape = SubResource("r40_40")
+
+[node name="Props" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="WritingTable" type="StaticBody2D" parent="Props"]
+position = Vector2(152, 352)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Props/WritingTable"]
+position = Vector2(0, -8)
+shape = SubResource("g48_16")
+
+[node name="Color" type="ColorRect" parent="Props/WritingTable"]
+offset_left = -24.0
+offset_top = -24
+offset_right = 24.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.34999999403954, 0.25, 0.20000000298023, 1)
+
+[node name="Interact" type="Area2D" parent="Props/WritingTable"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "table"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/WritingTable/Interact"]
+position = Vector2(0, -12.0)
+shape = SubResource("r64_40")
+
+[node name="Drawer" type="StaticBody2D" parent="Props"]
+position = Vector2(256, 400)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Drawer"]
+position = Vector2(0, -8)
+shape = SubResource("g32_16")
+
+[node name="Color" type="ColorRect" parent="Props/Drawer"]
+offset_left = -20.0
+offset_top = -24
+offset_right = 20.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.30000001192093, 0.21999999880791, 0.18000000715256, 1)
+
+[node name="Interact" type="Area2D" parent="Props/Drawer"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "drawer"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Drawer/Interact"]
+position = Vector2(0, -12.0)
+shape = SubResource("r56_40")
+
+[node name="Bed" type="StaticBody2D" parent="Props"]
+position = Vector2(680, 384)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Bed"]
+position = Vector2(0, -24)
+shape = SubResource("g80_48")
+
+[node name="Color" type="ColorRect" parent="Props/Bed"]
+offset_left = -40.0
+offset_top = -50
+offset_right = 40.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.40000000596046, 0.33000001311302, 0.41999998688698, 1)
+
+[node name="Pillow" type="ColorRect" parent="Props/Bed"]
+offset_left = -36.0
+offset_top = -46.0
+offset_right = -16.0
+offset_bottom = -4.0
+mouse_filter = 2
+color = Color(0.8, 0.78, 0.82, 1)
+
+[node name="Interact" type="Area2D" parent="Props/Bed"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "bed"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Bed/Interact"]
+position = Vector2(0, -25.0)
+shape = SubResource("r96_66")
+
+[node name="PillarA" type="StaticBody2D" parent="Props"]
+position = Vector2(200, 144)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/PillarA"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-10.0, -59)
+region_enabled = true
+region_rect = Rect2(422, 339, 20, 59)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/PillarA"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="PillarB" type="StaticBody2D" parent="Props"]
+position = Vector2(328, 240)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/PillarB"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-10.0, -59)
+region_enabled = true
+region_rect = Rect2(422, 339, 20, 59)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/PillarB"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="PillarC" type="StaticBody2D" parent="Props"]
+position = Vector2(456, 144)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/PillarC"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-10.0, -59)
+region_enabled = true
+region_rect = Rect2(422, 339, 20, 59)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/PillarC"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="PillarD" type="StaticBody2D" parent="Props"]
+position = Vector2(552, 240)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/PillarD"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-10.0, -59)
+region_enabled = true
+region_rect = Rect2(422, 339, 20, 59)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/PillarD"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="BlockA" type="StaticBody2D" parent="Props"]
+position = Vector2(400, 192)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/BlockA"]
+texture = ExtResource("6")
+centered = false
+offset = Vector2(-14, -40)
+region_enabled = true
+region_rect = Rect2(2, 112, 27, 40)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/BlockA"]
+position = Vector2(0, -8)
+shape = SubResource("g32_16")
+
+[node name="BlockB" type="StaticBody2D" parent="Props"]
+position = Vector2(624, 144)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/BlockB"]
+texture = ExtResource("6")
+centered = false
+offset = Vector2(-16.0, -41)
+region_enabled = true
+region_rect = Rect2(224, 101, 32, 41)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/BlockB"]
+position = Vector2(0, -8)
+shape = SubResource("g32_16")
+
+[node name="CandelabraW" type="StaticBody2D" parent="Props"]
+position = Vector2(120, 288)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/CandelabraW"]
+texture = ExtResource("8")
+centered = false
+offset = Vector2(-16, -62)
+hframes = 4
+vframes = 2
+script = ExtResource("3")
+
+[node name="Shape" type="CollisionShape2D" parent="Props/CandelabraW"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="CandelabraE" type="StaticBody2D" parent="Props"]
+position = Vector2(712, 288)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/CandelabraE"]
+texture = ExtResource("8")
+centered = false
+offset = Vector2(-16, -62)
+hframes = 4
+vframes = 2
+script = ExtResource("3")
+
+[node name="Shape" type="CollisionShape2D" parent="Props/CandelabraE"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="Edrin" type="Area2D" parent="."]
+position = Vector2(392, 296)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "edrin_first"
+
+[node name="Sprite" type="Sprite2D" parent="Edrin"]
+texture = ExtResource("9")
+offset = Vector2(0, -17)
+hframes = 8
+vframes = 41
+script = ExtResource("10")
+facing = "down"
+
+[node name="Shape" type="CollisionShape2D" parent="Edrin"]
+position = Vector2(0, -10)
+shape = SubResource("c16")
+
+[node name="Block" type="StaticBody2D" parent="Edrin"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Edrin/Block"]
+position = Vector2(0, -4)
+shape = SubResource("r12_8")
+
+[node name="Crow" type="Area2D" parent="."]
+visible = false
+position = Vector2(464, 84)
+collision_layer = 4
+collision_mask = 0
+monitorable = false
+script = ExtResource("4")
+conversation_id = "crow_first"
+repeat_conversation_id = "crow_repeat"
+
+[node name="Bird" type="Polygon2D" parent="Crow"]
+color = Color(0.05, 0.05, 0.07, 1)
+polygon = PackedVector2Array(-6, 0, -3, -5, 2, -6, 6, -9, 5, -4, 7, -2, 4, 2, 5, 5, 2, 3, -2, 3, -6, 5)
+
+[node name="Shape" type="CollisionShape2D" parent="Crow"]
+shape = SubResource("r28_28")
+
+[node name="ChaseKit" parent="." instance=ExtResource("11")]
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Spawns"]
+position = Vector2(392, 376)
+metadata/facing = "up"
+
+[node name="from_grounds" type="Marker2D" parent="Spawns"]
+position = Vector2(648, 136)
+metadata/facing = "down"

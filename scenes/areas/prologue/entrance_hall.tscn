@@ -1,0 +1,585 @@
+[gd_scene load_steps=24 format=3]
+
+[ext_resource type="Script" path="res://scripts/areas/prologue/entrance_hall.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/world/frame_loop.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/interaction/interactable.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/world/exit.gd" id="5"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/castle_interriors.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/Anim/torch.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/MemaoCharacterFantasySpritePack-v3/004.png" id="8"]
+[ext_resource type="Script" path="res://scripts/characters/character_sprite.gd" id="9"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/castle_decoratives.png" id="10"]
+
+[sub_resource type="RectangleShape2D" id="r12_8"]
+size = Vector2(12, 8)
+
+[sub_resource type="RectangleShape2D" id="wallN"]
+size = Vector2(496, 128)
+
+[sub_resource type="RectangleShape2D" id="wallNE"]
+size = Vector2(48, 128)
+
+[sub_resource type="RectangleShape2D" id="stairblock"]
+size = Vector2(32, 112)
+
+[sub_resource type="RectangleShape2D" id="wallside"]
+size = Vector2(32, 256)
+
+[sub_resource type="RectangleShape2D" id="wallS"]
+size = Vector2(480, 64)
+
+[sub_resource type="RectangleShape2D" id="nookbottom"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="r28_16"]
+size = Vector2(28, 16)
+
+[sub_resource type="RectangleShape2D" id="r32_16"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="e32_8"]
+size = Vector2(32, 8)
+
+[sub_resource type="CanvasItemMaterial" id="add"]
+blend_mode = 1
+
+[node name="EntranceHall" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1")
+metadata/area_size = Vector2i(576, 256)
+metadata/area_label = "Hollowmere, the hall"
+metadata/border = "black"
+
+[node name="Chill" type="CanvasModulate" parent="."]
+color = Color(0.62, 0.6, 0.78, 1)
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+z_index = -1
+script = ExtResource("2")
+atlas = ExtResource("6")
+legend = {".": Rect2i(14, 38, 2, 2), "1": Rect2i(4, 4, 1, 1), "2": Rect2i(0, 4, 1, 1), "3": Rect2i(4, 0, 1, 1), "4": Rect2i(0, 0, 1, 1), "B": Rect2i(2, 8, 1, 1), "L": Rect2i(4, 2, 1, 1), "R": Rect2i(0, 2, 1, 1), "^": Rect2i(2, 4, 1, 1), "_": Rect2i(2, 0, 1, 1), "b": Rect2i(2, 6, 1, 1)}
+rows = PackedStringArray("1^^^^^^^^^^^^^^^^2", "LbbbbbbbbbbbbbbbbR", "LbbbbbbbbbbbbbbbbR", "LBBBBBBBBBBBBBBBBR", "L................R", "L................R", "L..R_____________4", "3__4")
+
+[node name="Floor" type="Node2D" parent="."]
+z_index = -1
+
+[node name="WallFoot" type="ColorRect" parent="Floor"]
+offset_left = 32.0
+offset_top = 128.0
+offset_right = 544.0
+offset_bottom = 136.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.22)
+
+[node name="Runner" type="ColorRect" parent="Floor"]
+offset_left = 40.0
+offset_top = 144.0
+offset_right = 536.0
+offset_bottom = 176.0
+mouse_filter = 2
+color = Color(0.3, 0.09, 0.11, 1)
+
+[node name="RunnerInner" type="ColorRect" parent="Floor/Runner"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 491.0
+offset_bottom = 27.0
+mouse_filter = 2
+color = Color(0.36, 0.11, 0.13, 1)
+
+[node name="TrimTop" type="ColorRect" parent="Floor/Runner"]
+offset_right = 496.0
+offset_bottom = 2.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.2, 1)
+
+[node name="TrimBottom" type="ColorRect" parent="Floor/Runner"]
+offset_top = 30.0
+offset_right = 496.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.2, 1)
+
+[node name="TrimInnerTop" type="ColorRect" parent="Floor/Runner"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 492.0
+offset_bottom = 5.0
+mouse_filter = 2
+color = Color(0.45, 0.33, 0.17, 1)
+
+[node name="TrimInnerBottom" type="ColorRect" parent="Floor/Runner"]
+offset_left = 4.0
+offset_top = 27.0
+offset_right = 492.0
+offset_bottom = 28.0
+mouse_filter = 2
+color = Color(0.45, 0.33, 0.17, 1)
+
+[node name="TrimEndW" type="ColorRect" parent="Floor/Runner"]
+offset_right = 2.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.2, 1)
+
+[node name="TrimEndE" type="ColorRect" parent="Floor/Runner"]
+offset_left = 494.0
+offset_right = 496.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.2, 1)
+
+[node name="NookRunner" type="ColorRect" parent="Floor"]
+offset_left = 48.0
+offset_top = 176.0
+offset_right = 80.0
+offset_bottom = 224.0
+mouse_filter = 2
+color = Color(0.3, 0.09, 0.11, 1)
+
+[node name="TrimL" type="ColorRect" parent="Floor/NookRunner"]
+offset_right = 2.0
+offset_bottom = 48.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.2, 1)
+
+[node name="TrimR" type="ColorRect" parent="Floor/NookRunner"]
+offset_left = 30.0
+offset_right = 32.0
+offset_bottom = 48.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.2, 1)
+
+[node name="TrimEnd" type="ColorRect" parent="Floor/NookRunner"]
+offset_top = 46.0
+offset_right = 32.0
+offset_bottom = 48.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.2, 1)
+
+[node name="Threshold" type="ColorRect" parent="Floor"]
+offset_left = 52.0
+offset_top = 216.0
+offset_right = 92.0
+offset_bottom = 224.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.18)
+
+[node name="WallDecor" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Pillar96" type="Sprite2D" parent="WallDecor"]
+texture = ExtResource("6")
+centered = false
+position = Vector2(96, 0)
+region_enabled = true
+region_rect = Rect2(384, 128, 32, 142)
+
+[node name="Pillar192" type="Sprite2D" parent="WallDecor"]
+texture = ExtResource("6")
+centered = false
+position = Vector2(192, 0)
+region_enabled = true
+region_rect = Rect2(384, 128, 32, 142)
+
+[node name="Pillar288" type="Sprite2D" parent="WallDecor"]
+texture = ExtResource("6")
+centered = false
+position = Vector2(288, 0)
+region_enabled = true
+region_rect = Rect2(384, 128, 32, 142)
+
+[node name="Pillar384" type="Sprite2D" parent="WallDecor"]
+texture = ExtResource("6")
+centered = false
+position = Vector2(384, 0)
+region_enabled = true
+region_rect = Rect2(384, 128, 32, 142)
+
+[node name="SideDoor" type="Sprite2D" parent="WallDecor"]
+texture = ExtResource("6")
+centered = false
+position = Vector2(144, 79)
+region_enabled = true
+region_rect = Rect2(496, 975, 32, 49)
+
+[node name="Window240" type="Sprite2D" parent="WallDecor"]
+texture = ExtResource("6")
+centered = false
+position = Vector2(240, 40)
+region_enabled = true
+region_rect = Rect2(96, 993, 32, 48)
+
+[node name="Window432" type="Sprite2D" parent="WallDecor"]
+texture = ExtResource("6")
+centered = false
+position = Vector2(432, 40)
+region_enabled = true
+region_rect = Rect2(144, 993, 32, 48)
+
+[node name="Valance224" type="Sprite2D" parent="WallDecor"]
+texture = ExtResource("10")
+centered = false
+position = Vector2(224, 34)
+region_enabled = true
+region_rect = Rect2(32, 288, 64, 25)
+
+[node name="Valance416" type="Sprite2D" parent="WallDecor"]
+texture = ExtResource("10")
+centered = false
+position = Vector2(416, 34)
+region_enabled = true
+region_rect = Rect2(160, 288, 64, 25)
+
+[node name="Stair" type="Sprite2D" parent="WallDecor"]
+texture = ExtResource("6")
+centered = false
+position = Vector2(480, 64)
+region_enabled = true
+region_rect = Rect2(384, 896, 64, 64)
+
+[node name="Torches" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Torch96" type="Sprite2D" parent="Torches"]
+position = Vector2(112, 64)
+texture = ExtResource("7")
+hframes = 4
+vframes = 2
+script = ExtResource("3")
+
+[node name="Torch288" type="Sprite2D" parent="Torches"]
+position = Vector2(304, 64)
+texture = ExtResource("7")
+hframes = 4
+vframes = 2
+script = ExtResource("3")
+
+[node name="Light" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Shaft240" type="Polygon2D" parent="Light"]
+material = SubResource("add")
+color = Color(0.85, 0.55, 0.6, 0.1)
+polygon = PackedVector2Array(240, 88, 272, 88, 322, 178, 274, 178)
+
+[node name="Shaft432" type="Polygon2D" parent="Light"]
+material = SubResource("add")
+color = Color(0.85, 0.55, 0.6, 0.1)
+polygon = PackedVector2Array(432, 88, 464, 88, 514, 178, 466, 178)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="WallNorth" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallNorth"]
+position = Vector2(248, 64)
+shape = SubResource("wallN")
+
+[node name="WallNorthEast" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallNorthEast"]
+position = Vector2(552, 64)
+shape = SubResource("wallNE")
+
+[node name="StairBlock" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/StairBlock"]
+position = Vector2(512, 56)
+shape = SubResource("stairblock")
+
+[node name="WallWest" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallWest"]
+position = Vector2(16, 128)
+shape = SubResource("wallside")
+
+[node name="WallEast" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallEast"]
+position = Vector2(560, 128)
+shape = SubResource("wallside")
+
+[node name="WallSouth" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/WallSouth"]
+position = Vector2(336, 224)
+shape = SubResource("wallS")
+
+[node name="NookBottom" type="StaticBody2D" parent="Walls"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Walls/NookBottom"]
+position = Vector2(64, 240)
+shape = SubResource("nookbottom")
+
+[node name="FrontDoorLeaf" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 56.0
+offset_top = 226.0
+offset_right = 88.0
+offset_bottom = 252.0
+mouse_filter = 2
+color = Color(0.24, 0.16, 0.11, 1)
+
+[node name="Frame" type="ColorRect" parent="FrontDoorLeaf"]
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 35.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.38, 0.37, 0.4, 1)
+
+[node name="IronBandA" type="ColorRect" parent="FrontDoorLeaf"]
+offset_top = 6.0
+offset_right = 32.0
+offset_bottom = 8.0
+mouse_filter = 2
+color = Color(0.3, 0.3, 0.33, 1)
+
+[node name="IronBandB" type="ColorRect" parent="FrontDoorLeaf"]
+offset_top = 18.0
+offset_right = 32.0
+offset_bottom = 20.0
+mouse_filter = 2
+color = Color(0.3, 0.3, 0.33, 1)
+
+[node name="Handle" type="ColorRect" parent="FrontDoorLeaf"]
+offset_left = 24.0
+offset_top = 12.0
+offset_right = 27.0
+offset_bottom = 15.0
+mouse_filter = 2
+color = Color(0.6, 0.5, 0.25, 1)
+
+[node name="Hooks" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(72, 120)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "hall_hooks"
+
+[node name="Rail" type="ColorRect" parent="Hooks"]
+offset_left = -28.0
+offset_top = -50.0
+offset_right = 12.0
+offset_bottom = -47.0
+mouse_filter = 2
+color = Color(0.45, 0.32, 0.2, 1)
+
+[node name="HookA" type="ColorRect" parent="Hooks"]
+offset_left = -23.0
+offset_top = -47.0
+offset_right = -20.0
+offset_bottom = -41.0
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.52, 1)
+
+[node name="HookB" type="ColorRect" parent="Hooks"]
+offset_left = -9.0
+offset_top = -47.0
+offset_right = -6.0
+offset_bottom = -41.0
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.52, 1)
+
+[node name="HookC" type="ColorRect" parent="Hooks"]
+offset_left = 5.0
+offset_top = -47.0
+offset_right = 8.0
+offset_bottom = -41.0
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.52, 1)
+
+[node name="Coat" type="ColorRect" parent="Hooks"]
+offset_left = -12.0
+offset_top = -44.0
+offset_right = -3.0
+offset_bottom = -18.0
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.6, 1)
+
+[node name="Cloak" type="ColorRect" parent="Hooks"]
+offset_left = 2.0
+offset_top = -44.0
+offset_right = 11.0
+offset_bottom = -22.0
+mouse_filter = 2
+color = Color(0.3, 0.12, 0.14, 1)
+
+[node name="Shelf" type="ColorRect" parent="Hooks"]
+offset_left = -28.0
+offset_top = -62.0
+offset_right = 12.0
+offset_bottom = -59.0
+mouse_filter = 2
+color = Color(0.45, 0.32, 0.2, 1)
+
+[node name="Shape" type="CollisionShape2D" parent="Hooks"]
+shape = SubResource("r28_16")
+
+[node name="HymnBoard" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(344, 120)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "hall_hymnboard"
+
+[node name="Frame" type="ColorRect" parent="HymnBoard"]
+offset_left = -18.0
+offset_top = -66.0
+offset_right = 18.0
+offset_bottom = -14.0
+mouse_filter = 2
+color = Color(0.4, 0.3, 0.2, 1)
+
+[node name="Board" type="ColorRect" parent="HymnBoard"]
+offset_left = -16.0
+offset_top = -64.0
+offset_right = 16.0
+offset_bottom = -16.0
+mouse_filter = 2
+color = Color(0.13, 0.1, 0.08, 1)
+
+[node name="Title" type="ColorRect" parent="HymnBoard"]
+offset_left = -10.0
+offset_top = -60.0
+offset_right = 10.0
+offset_bottom = -58.0
+mouse_filter = 2
+color = Color(0.75, 0.68, 0.5, 1)
+
+[node name="Num1" type="ColorRect" parent="HymnBoard"]
+offset_left = -12.0
+offset_top = -52.0
+offset_right = -6.0
+offset_bottom = -46.0
+mouse_filter = 2
+color = Color(0.85, 0.82, 0.7, 1)
+
+[node name="Num2" type="ColorRect" parent="HymnBoard"]
+offset_left = -3.0
+offset_top = -52.0
+offset_right = 3.0
+offset_bottom = -46.0
+mouse_filter = 2
+color = Color(0.85, 0.82, 0.7, 1)
+
+[node name="Num3" type="ColorRect" parent="HymnBoard"]
+offset_left = 6.0
+offset_top = -52.0
+offset_right = 12.0
+offset_bottom = -46.0
+mouse_filter = 2
+color = Color(0.85, 0.82, 0.7, 1)
+
+[node name="Num4" type="ColorRect" parent="HymnBoard"]
+offset_left = -12.0
+offset_top = -42.0
+offset_right = -6.0
+offset_bottom = -36.0
+mouse_filter = 2
+color = Color(0.85, 0.82, 0.7, 1)
+
+[node name="Num5" type="ColorRect" parent="HymnBoard"]
+offset_left = -3.0
+offset_top = -42.0
+offset_right = 3.0
+offset_bottom = -36.0
+mouse_filter = 2
+color = Color(0.85, 0.82, 0.7, 1)
+
+[node name="Num6" type="ColorRect" parent="HymnBoard"]
+offset_left = 6.0
+offset_top = -42.0
+offset_right = 12.0
+offset_bottom = -36.0
+mouse_filter = 2
+color = Color(0.85, 0.82, 0.7, 1)
+
+[node name="Ledge" type="ColorRect" parent="HymnBoard"]
+offset_left = -14.0
+offset_top = -30.0
+offset_right = 14.0
+offset_bottom = -28.0
+mouse_filter = 2
+color = Color(0.4, 0.3, 0.2, 1)
+
+[node name="Shape" type="CollisionShape2D" parent="HymnBoard"]
+shape = SubResource("r32_16")
+
+[node name="FrontDoor" type="Area2D" parent="."]
+position = Vector2(72, 232)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4")
+conversation_id = "door_locked"
+
+[node name="Shape" type="CollisionShape2D" parent="FrontDoor"]
+shape = SubResource("r32_16")
+
+[node name="Edrin" type="Node2D" parent="."]
+position = Vector2(72, 184)
+
+[node name="Sprite" type="Sprite2D" parent="Edrin"]
+texture = ExtResource("8")
+offset = Vector2(0, -17)
+hframes = 8
+vframes = 41
+script = ExtResource("9")
+facing = "down"
+
+[node name="Block" type="StaticBody2D" parent="Edrin"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Edrin/Block"]
+position = Vector2(0, -4)
+shape = SubResource("r12_8")
+
+[node name="RoomExit" type="Area2D" parent="."]
+position = Vector2(512, 120)
+script = ExtResource("5")
+target_area = "maren_room"
+target_spawn = "start"
+enabled = false
+
+[node name="Shape" type="CollisionShape2D" parent="RoomExit"]
+shape = SubResource("e32_8")
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Spawns"]
+position = Vector2(72, 216)
+metadata/facing = "up"
+
+[node name="Glows" type="Node2D" parent="."]
+z_index = 1
+
+[node name="GlowTorch96" type="Polygon2D" parent="Glows"]
+material = SubResource("add")
+position = Vector2(112, 62)
+color = Color(1, 0.7, 0.35, 0.11)
+polygon = PackedVector2Array(-28, 0, -19, -19, 0, -28, 19, -19, 28, 0, 19, 19, 0, 28, -19, 19)
+
+[node name="GlowTorch288" type="Polygon2D" parent="Glows"]
+material = SubResource("add")
+position = Vector2(304, 62)
+color = Color(1, 0.7, 0.35, 0.11)
+polygon = PackedVector2Array(-28, 0, -19, -19, 0, -28, 19, -19, 28, 0, 19, 19, 0, 28, -19, 19)

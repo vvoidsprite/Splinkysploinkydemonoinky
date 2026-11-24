@@ -1,0 +1,3 @@
+# The Seal runs on devotion, and love for Caldris weakens it
+
+The Seal is kept shut by the Lychkin heir's devotion to the Lumen Order together with periodic Rites of Renewal. Maren's genuine affection for Caldris, and her skipped Rite, are what weakened it, which lets Fragments slip through. We chose this over a plain "the Seal is weakening for outside reasons" because it makes the central choice, love versus faith, the same resource as the plot's pressure: every ending, the Order's interest in keeping Maren away from Caldris, and the Fragments' existence all follow from it. Changing it later would force a rewrite of the endings and the parent's motives.

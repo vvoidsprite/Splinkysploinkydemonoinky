@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2"]
 
-[node name="Main" type="Node2D"]
+[ext_resource type="PackedScene" path="res://scenes/ui/title_screen.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/ui/save_menu.tscn" id="4"]
+
+[node name="Main" type="Node2D" groups=["area_manager"]]
 script = ExtResource("1")
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="World" instance=ExtResource("2")]
+
+[node name="Fade" type="CanvasLayer" parent="."]
+layer = 30
+
+[node name="Rect" type="ColorRect" parent="Fade"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="TitleScreen" parent="." instance=ExtResource("3")]
+
+[node name="SaveMenu" parent="." instance=ExtResource("4")]

@@ -1,0 +1,387 @@
+[gd_scene load_steps=22 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/world/exit.gd" id="2"]
+[ext_resource type="Texture2D" path="res://assets/RPG_Buildings_CASTLE_v1.0/castle_outside.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/RPGFW_Set1_v1.0/_PNG/g_terrain1.png" id="4"]
+[ext_resource type="Texture2D" path="res://assets/RPGFW_Set1_v1.0/_PNG/veg_decoratives.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/RPGFW_Set1_v1.0/_PNG/rocks_with_shadows.png" id="6"]
+
+[sub_resource type="RectangleShape2D" id="r1280_112"]
+size = Vector2(1280, 112)
+
+[sub_resource type="RectangleShape2D" id="r16_768"]
+size = Vector2(16, 768)
+
+[sub_resource type="RectangleShape2D" id="r1280_16"]
+size = Vector2(1280, 16)
+
+[sub_resource type="RectangleShape2D" id="r40_14"]
+size = Vector2(40, 14)
+
+[sub_resource type="RectangleShape2D" id="r12_8"]
+size = Vector2(12, 8)
+
+[sub_resource type="RectangleShape2D" id="r16_10"]
+size = Vector2(16, 10)
+
+[sub_resource type="RectangleShape2D" id="r56_20"]
+size = Vector2(56, 20)
+
+[sub_resource type="RectangleShape2D" id="r36_14"]
+size = Vector2(36, 14)
+
+[sub_resource type="RectangleShape2D" id="r56_24"]
+size = Vector2(56, 24)
+
+[sub_resource type="RectangleShape2D" id="r14_8"]
+size = Vector2(14, 8)
+
+[sub_resource type="RectangleShape2D" id="g16_16"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="g48_16"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="g32_16"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="g48_32"]
+size = Vector2(48, 32)
+
+[sub_resource type="RectangleShape2D" id="e32_8"]
+size = Vector2(32, 8)
+
+[node name="GroundsTest" type="Node2D"]
+y_sort_enabled = true
+metadata/area_size = Vector2i(1280, 768)
+
+[node name="Grass" type="TileMapLayer" parent="."]
+z_index = -2
+script = ExtResource("1")
+atlas = ExtResource("4")
+legend = {"g": Rect2i(28, 0, 4, 4)}
+rows = PackedStringArray("gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg", "gggggggggggggggggggggggggggggggggggggggg")
+
+[node name="ManorWall" type="TileMapLayer" parent="."]
+z_index = -1
+script = ExtResource("1")
+atlas = ExtResource("3")
+legend = {"v": Rect2i(8, 18, 3, 1), "w": Rect2i(8, 15, 3, 3)}
+rows = PackedStringArray("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww", "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww", "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww", "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="North" type="StaticBody2D" parent="Bounds"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/North"]
+position = Vector2(640, 56)
+shape = SubResource("r1280_112")
+
+[node name="West" type="StaticBody2D" parent="Bounds"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/West"]
+position = Vector2(-8, 384)
+shape = SubResource("r16_768")
+
+[node name="East" type="StaticBody2D" parent="Bounds"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/East"]
+position = Vector2(1288, 384)
+shape = SubResource("r16_768")
+
+[node name="South" type="StaticBody2D" parent="Bounds"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/South"]
+position = Vector2(640, 776)
+shape = SubResource("r1280_16")
+
+[node name="Props" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Arch" type="Sprite2D" parent="Props"]
+position = Vector2(640, 112)
+texture = ExtResource("3")
+centered = false
+offset = Vector2(-40, -83)
+region_enabled = true
+region_rect = Rect2(1080, 544, 80, 83)
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(640, 116)
+script = ExtResource("2")
+target_area = "manor_room"
+target_spawn = "from_grounds"
+
+[node name="Shape" type="CollisionShape2D" parent="Exit"]
+shape = SubResource("e32_8")
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="from_manor" type="Marker2D" parent="Spawns"]
+position = Vector2(648, 168)
+metadata/facing = "down"
+
+[node name="DeadTreeTall1" type="StaticBody2D" parent="Props"]
+position = Vector2(232, 352)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/DeadTreeTall1"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-28.0, -155)
+region_enabled = true
+region_rect = Rect2(837, 32, 56, 155)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/DeadTreeTall1"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="DeadTreeTall2" type="StaticBody2D" parent="Props"]
+position = Vector2(936, 384)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/DeadTreeTall2"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-28.0, -155)
+region_enabled = true
+region_rect = Rect2(837, 32, 56, 155)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/DeadTreeTall2"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="DeadTreeTall3" type="StaticBody2D" parent="Props"]
+position = Vector2(1176, 256)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/DeadTreeTall3"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-28.0, -155)
+region_enabled = true
+region_rect = Rect2(837, 32, 56, 155)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/DeadTreeTall3"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="DeadTree1" type="StaticBody2D" parent="Props"]
+position = Vector2(424, 240)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/DeadTree1"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-25, -131)
+region_enabled = true
+region_rect = Rect2(901, 56, 51, 131)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/DeadTree1"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="DeadTree2" type="StaticBody2D" parent="Props"]
+position = Vector2(760, 688)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/DeadTree2"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-25, -131)
+region_enabled = true
+region_rect = Rect2(901, 56, 51, 131)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/DeadTree2"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="Pine1" type="StaticBody2D" parent="Props"]
+position = Vector2(88, 592)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/Pine1"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-32, -168)
+region_enabled = true
+region_rect = Rect2(587, 20, 65, 168)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Pine1"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="Pine2" type="StaticBody2D" parent="Props"]
+position = Vector2(1208, 704)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/Pine2"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-32, -168)
+region_enabled = true
+region_rect = Rect2(587, 20, 65, 168)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Pine2"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="SmallPine1" type="StaticBody2D" parent="Props"]
+position = Vector2(1128, 592)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/SmallPine1"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-22.0, -91)
+region_enabled = true
+region_rect = Rect2(778, 97, 44, 91)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/SmallPine1"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="SmallPine2" type="StaticBody2D" parent="Props"]
+position = Vector2(296, 704)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/SmallPine2"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-22.0, -91)
+region_enabled = true
+region_rect = Rect2(778, 97, 44, 91)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/SmallPine2"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="Boulder1" type="StaticBody2D" parent="Props"]
+position = Vector2(456, 560)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/Boulder1"]
+texture = ExtResource("6")
+centered = false
+offset = Vector2(-35.0, -46)
+region_enabled = true
+region_rect = Rect2(591, 41, 70, 46)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Boulder1"]
+position = Vector2(0, -8)
+shape = SubResource("g48_16")
+
+[node name="Boulder2" type="StaticBody2D" parent="Props"]
+position = Vector2(984, 528)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/Boulder2"]
+texture = ExtResource("6")
+centered = false
+offset = Vector2(-35.0, -46)
+region_enabled = true
+region_rect = Rect2(591, 41, 70, 46)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Boulder2"]
+position = Vector2(0, -8)
+shape = SubResource("g48_16")
+
+[node name="Boulder21" type="StaticBody2D" parent="Props"]
+position = Vector2(152, 208)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/Boulder21"]
+texture = ExtResource("6")
+centered = false
+offset = Vector2(-35.0, -46)
+region_enabled = true
+region_rect = Rect2(679, 41, 70, 46)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Boulder21"]
+position = Vector2(0, -8)
+shape = SubResource("g48_16")
+
+[node name="SmallRocks1" type="StaticBody2D" parent="Props"]
+position = Vector2(736, 336)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/SmallRocks1"]
+texture = ExtResource("6")
+centered = false
+offset = Vector2(-21.5, -38)
+region_enabled = true
+region_rect = Rect2(587, 205, 43, 38)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/SmallRocks1"]
+position = Vector2(0, -8)
+shape = SubResource("g32_16")
+
+[node name="Spire1" type="StaticBody2D" parent="Props"]
+position = Vector2(1032, 208)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/Spire1"]
+texture = ExtResource("6")
+centered = false
+offset = Vector2(-36.0, -87)
+region_enabled = true
+region_rect = Rect2(397, 41, 72, 87)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Spire1"]
+position = Vector2(0, -16)
+shape = SubResource("g48_32")
+
+[node name="LeafyTree1" type="StaticBody2D" parent="Props"]
+position = Vector2(520, 400)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/LeafyTree1"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-21.0, -72)
+region_enabled = true
+region_rect = Rect2(653, 454, 42, 72)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/LeafyTree1"]
+position = Vector2(0, -8)
+shape = SubResource("g16_16")
+
+[node name="Stump1" type="StaticBody2D" parent="Props"]
+position = Vector2(840, 608)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="Props/Stump1"]
+texture = ExtResource("5")
+centered = false
+offset = Vector2(-29.5, -50)
+region_enabled = true
+region_rect = Rect2(40, 517, 59, 50)
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Stump1"]
+position = Vector2(0, -8)
+shape = SubResource("g48_16")
